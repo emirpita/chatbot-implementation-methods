@@ -12,7 +12,7 @@ def preprocess():
     tags = []
     docs = []
     ignore_words = ['?', '!', ',', '.']
-    with open('intents.json') as file:
+    with open('support/intents.json') as file:
         intents = json.load(file)
 
     for i in intents["intents"]:

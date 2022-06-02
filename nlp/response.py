@@ -6,7 +6,7 @@ from weblib import search_wrapper, play, book, get_weather, get_news_update, scr
 
 
 def get_res(res):
-    with open('intents.json') as file:
+    with open('support/intents.json') as file:
         intents = json.load(file)
     tag = res[0]['intent']
     all_tags = intents['intents']
