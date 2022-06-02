@@ -3,7 +3,6 @@ from nltk.stem import WordNetLemmatizer
 import numpy as np
 import pickle
 import tensorflow as tf
-import random
 
 lemmatizer = WordNetLemmatizer()
 
