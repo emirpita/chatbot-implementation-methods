@@ -51,5 +51,5 @@ def response(phrase):
         result = "Sorry, I don't think i understand"
     print(result)
 
-
-response("what is internet")
+# Testing
+response("What is GCP")
