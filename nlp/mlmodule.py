@@ -38,14 +38,14 @@ def bag_of_words(phrase, words):
 def predict_wrapper(phrase):
     model = tf.keras.models.load_model('chatbot_model.h5')
     words = []
-    with (open("words.pkl", "rb")) as openfile:
+    with (open("PickleArchive/words.pkl", "rb")) as openfile:
         while True:
             try:
                 words.append(pickle.load(openfile))
             except EOFError:
                 break
     tags = []
-    with (open("tags.pkl", "rb")) as openfile:
+    with (open("PickleArchive/tags.pkl", "rb")) as openfile:
         while True:
             try:
                 tags.append(pickle.load(openfile))

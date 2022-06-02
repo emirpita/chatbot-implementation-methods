@@ -33,6 +33,6 @@ def preprocess():
             words_f.append(w_1)
     words_f = sorted(list(set(words_f)))
 
-    pickle.dump(words_f, open('words.pkl', 'wb'))
-    pickle.dump(tags, open('tags.pkl', 'wb'))
+    pickle.dump(words_f, open('PickleArchive/words.pkl', 'wb'))
+    pickle.dump(tags, open('PickleArchive/tags.pkl', 'wb'))
     return words_f, tags, docs
