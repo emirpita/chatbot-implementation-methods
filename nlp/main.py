@@ -3,7 +3,7 @@ import nltk
 from nltk.stem import WordNetLemmatizer
 import re
 
-lem = WordNetLemmatizer()
+lemmatizer = WordNetLemmatizer()
 
 
 def swap_pronouns(phrase):
@@ -41,7 +41,7 @@ def filter_command(phrase):
         if "W" in tup[1] and "that" not in tup[0]:
             query.append(tup[0])
     for w in work:
-        work_f.append(lem.lemmatize(w.lower()))
+        work_f.append(lemmatizer.lemmatize(w.lower()))
     if query:
         if "you" in tokens or "your" in tokens:
             task = 0
