@@ -26,8 +26,7 @@ def search_wrapper(subject, phrase):
 def play(message, subject):
     result = message
     ext = "https://www.youtube.com/results?search_query="
-    messg = result.replace(" ", "+")
-    msg = ext + messg
+    msg = ext + result.replace(" ", "+")
 
     driver = webdriver.Chrome()
     wait = WebDriverWait(driver, 3)
@@ -58,7 +57,10 @@ def play(message, subject):
     # video=pafy.new(url)
     # print((driver.find_elements_by_xpath("//span[@class='ytp-time-duration']")[0]).text)
     s = driver.find_elements_by_xpath(
-        "//html/body/ytd-app/div/ytd-page-manager/ytd-search/div[1]/ytd-two-column-search-results-renderer/div/ytd-section-list-renderer/div[2]/ytd-item-section-renderer/div[3]/ytd-video-renderer[1]/div[1]/ytd-thumbnail/a/div[1]/ytd-thumbnail-overlay-time-status-renderer/span")[
+        "//html/body/ytd-app/div/ytd-page-manager/ytd-search/div["
+        "1]/ytd-two-column-search-results-renderer/div/ytd-section-list-renderer/div["
+        "2]/ytd-item-section-renderer/div[3]/ytd-video-renderer[1]/div[1]/ytd-thumbnail/a/div["
+        "1]/ytd-thumbnail-overlay-time-status-renderer/span")[
         0].text
     # s="10:00"
     time_k = int(s.split(':')[0]) * 60 + int(s.split(':')[1])
@@ -74,11 +76,11 @@ def book(message):
     if "hotel" in message:
 
         ext = "https://www.google.com/search?q="
-        print("Can u please specify the palce where you want to book")
+        print("Place of stay?")
         detail_place = input()
-        print("can u please specify the on the date of stay")
+        print("Date?")
         detail_date = input()
-        msg = "hotel booking at " + str(detail_place) + " on " + str(detail_date)
+        msg = "Alright, booking hotel at " + str(detail_place) + " on " + str(detail_date)
         url = ext + msg
 
         count = 0
@@ -92,22 +94,21 @@ def book(message):
             # webbrowser.open(re.split(":(?=http)",link["href"].replace("/url?q=",""))[0],new=1)
         webbrowser.open(url, new=1)
         time.sleep(5)
-        res = "Here are the options"
+        res = "Let's see your options: "
     elif "bus" in message:
         ext = "https://www.google.com/search?q="
-        print("Can u please specify your destination")
+        print("Where are you headed?")
         detail_dest = input()
-        print("Can u please specify your source")
+        print("From where are you traveling?")
         detail_source = input()
-        print("can u please specify the on the date of journey")
+        print("Alright, just need a date: ")
         detail_date = input()
-        print("can u please approx time of journey")
+        print("Time of journey?")
 
         detail_time = input()
-        print("AC or NON AC")
-        choice = input()
-        msg = choice + " bus booking from " + str(detail_source) + " to " + str(detail_dest) + " on " + str(
-            detail_date) + " at " + str(detail_time)
+
+        msg = "Booking bus from " + str(detail_source) + " to " + str(detail_dest) + " on " + str(
+            detail_date) + " at " + str(detail_time) + "..."
         url = ext + msg
 
         links = search(msg, num=5, stop=5, pause=2)
@@ -122,19 +123,19 @@ def book(message):
         res = "Here are the options"
     elif "room" in message:
         ext = "https://www.google.com/search?q="
-        print("Can u please specify your place")
+        print("Oh, going somewhere? Where do you want to stay?")
         detail_dest = input()
         # print("Can u please specify your source")
         # detail_source=input()
-        print("can u please specify the on the date of stay")
+        print("What is the date you want to book the room?")
         detail_date = input()
-        print("3 star or 5 star")
+        print("Tell me, 3 stars or maybe a 5 star room?")
         detail_desc = input()
 
         # detail_time=input()
-        print("AC or NON AC")
+        print("AC or no AC?")
         AC = input()
-        print("any particular hotel u want")
+        print("Maybe you've heard of a hotel you want to stay in? If yes, tell me")
         choice = input()
         if re.search(r"\b(no|none|nothing)\b", choice) is not None:
             choice = ""
@@ -156,18 +157,17 @@ def book(message):
         res = "Here are the options"
     elif "train" in message:
         ext = "https://www.google.com/search?q="
-        print("Can u please specify your destination")
+        print("Travelling by train? What an adventure! Where are you going?")
         detail_dest = input()
-        print("Can u please specify your source")
+        print("Awesome, where does your journey start?")
         detail_source = input()
-        print("can u please specify the on the date of journey")
+        print("Hm, I just need a date of travel")
         detail_date = input()
-        print("can u please approx time of journey")
+        print("Alright, approximate time of travel?")
 
         detail_time = input()
-        print("AC or NON AC")
-        choice = input()
-        msg = choice + " train booking from " + str(detail_source) + " to " + str(detail_dest) + " on " + str(
+
+        msg = "Booking train booking from " + str(detail_source) + " to " + str(detail_dest) + " on " + str(
             detail_date) + " at " + str(detail_time)
         url = ext + msg
 
@@ -182,7 +182,7 @@ def book(message):
         res = "Here are the options"
     elif "flight" in message:
         ext = "https://www.google.com/search?q="
-        print("Can u please specify your destination")
+        print("Can u please specify your destination") #TODO change dialogue
         detail_dest = input()
         print("Can u please specify your source")
         detail_source = input()
@@ -232,17 +232,17 @@ def book(message):
         time.sleep(5)
         res = "Here are the options"
     else:
-        res = "I dont properly understand but i will try to help"
+        res = "Didn't quite catch that, let's try Google"
         ext = "https://www.google.com/search?q="
         url = ext + message
         webbrowser.open(url, new=1)
 
 
 def get_weather():
-    api_key = "***********************************"
+    api_key = "***********************************" # TODO: INSERT API KEY
     base_url = "http://api.openweathermap.org/data/2.5/weather?"
 
-    print("Enter the city please")
+    print("For which city do you want to view the weather?")
 
     city_name = input()
     complete_url = base_url + "appid=" + api_key + "&q=" + city_name

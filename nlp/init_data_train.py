@@ -41,7 +41,6 @@ def data_creator():
     train = np.array(train)
     x_train = list(train[:, 0])
     y_train = list(train[:, 1])
-    print("1")
     np.save('test-train-data/x_train.npy', x_train)
     np.save('test-train-data/y_train.npy', y_train)
 

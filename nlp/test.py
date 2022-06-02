@@ -24,7 +24,7 @@ def scrape(phrase):
         wiki_c = wiki.content
         soup = BeautifulSoup(wiki_c, 'html.parser')
         data = soup.find_all('p')
-        print("Source:wikipedia")
+        print("From Wikipedia: ")
 
         print(data[0].get_text())
 
