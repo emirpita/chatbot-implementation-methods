@@ -1,15 +1,12 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import webbrowser
-import requests
 import time
-import datetime
 from bs4 import BeautifulSoup
 import re
-from googlesearch import search
+import googlesearch as gs
 import requests, json
 
 
@@ -85,7 +82,7 @@ def book(message):
 
         count = 0
         # import requests
-        links = search(msg, num=5, stop=5, pause=2)
+        links = gs.search(msg, num_results=5)
 
         for link in links:
             # print(link)
@@ -111,7 +108,7 @@ def book(message):
             detail_date) + " at " + str(detail_time) + "..."
         url = ext + msg
 
-        links = search(msg, num=5, stop=5, pause=2)
+        links = gs.search(msg, num_results=5)
 
         for link in links:
             # print(link)
@@ -144,7 +141,7 @@ def book(message):
         msg = mesg.replace(" ", "+")
         url = ext + msg
 
-        links = search(msg, num=5, stop=5, pause=2)
+        links = gs.search(msg, num_results=5)
         # links=search(msg, tld="co.in", num=5, stop=5, pause=2)
 
         for link in links:
@@ -171,7 +168,7 @@ def book(message):
             detail_date) + " at " + str(detail_time)
         url = ext + msg
 
-        links = search(msg, num=5, stop=5, pause=2)
+        links = gs.search(msg, num_results=5)
         for link in links:
             # print(link)
 
@@ -197,7 +194,7 @@ def book(message):
             detail_date) + " at " + str(detail_time)
         url = ext + msg
 
-        links = search(msg, num=5, stop=5, pause=2)
+        links = gs.search(msg, num_results=5)
         for link in links:
             # print(link)
 
@@ -222,7 +219,7 @@ def book(message):
         msg = detail_movie + " movie booking at " + str(detail_timing) + " in " + str(detail_region)
         url = ext + msg
 
-        links = search(msg, num=5, stop=5, pause=2)
+        links = gs.search(msg, num_results=5)
         for link in links:
             # print(link)
 
@@ -294,7 +291,7 @@ def get_news_update():
 def scrape(phrase):
     flag = 0
     ext = "https://www.google.com/search?q="
-    links = search(phrase, num=5, stop=5, pause=2)
+    links = gs.search(phrase, num_results=5)
     msg = phrase.replace(" ", "+")
     url = ext + msg
     i = 0

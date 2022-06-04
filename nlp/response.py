@@ -1,8 +1,13 @@
 import json
+
+import nltk
+
 from mlmodule import predict_wrapper
 from main import filter_command
 import random
 from weblib import search_wrapper, play, book, get_weather, get_news_update, scrape
+
+nltk.download("punkt")
 
 
 def get_res(res):
@@ -53,4 +58,4 @@ def response(phrase):
     print(result)
 
 # Testing
-response("What is GCP")
+#response("What is GCP")

@@ -3,6 +3,11 @@ import nltk
 from nltk.stem import WordNetLemmatizer
 import re
 
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('wordnet')
+
+
 lemmatizer = WordNetLemmatizer()
 
 
@@ -19,7 +24,7 @@ def filter_command(phrase):
     tokens = []
     tok = word_tokenize(phrase)
     for t in tok:
-        tokens.append(tok.lower())
+        tokens.append(t.lower())
     tags = nltk.pos_tag(tokens)
 
     work = []

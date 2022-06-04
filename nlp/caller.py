@@ -1,7 +1,6 @@
 from response import response
 
-flag = 0
 
-while flag == 0:
+while True:
     user_response = input()
     flag = response(user_response)
