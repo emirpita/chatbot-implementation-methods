@@ -50,16 +50,10 @@ def filter_command(phrase):
     if query:
         if "you" in tokens or "your" in tokens:
             task = 0
-        elif 'weather' not in tokens or 'news' not in tokens or 'headlines' not in tokens:
+        elif 'headlines' not in tokens:
             task = 1
-    elif 'play' in work_f or 'song' in subject or 'play' in subject:
-        task = 2
     elif 'book' in work_f or 'book' in tokens[0]:
-        task = 3
-    elif 'weather' in subject:
-        task = 4
-    elif 'news' in subject or 'headlines' in subject:
-        task = 5
+        task = 2
     else:
 
         if '?' in tokens and 'you' not in tokens and 'your' not in tokens:

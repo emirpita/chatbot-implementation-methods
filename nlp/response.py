@@ -5,7 +5,7 @@ import nltk
 from mlmodule import predict_wrapper
 from main import filter_command
 import random
-from weblib import search_wrapper, play, book, get_weather, get_news_update, scrape
+from weblib import search_wrapper, book, scrape
 
 nltk.download("punkt")
 
@@ -37,20 +37,8 @@ def response(phrase):
         result = "Here are some results"
 
     elif task == 2:
-        play(phrase, subject)
-        result = "Here you go"
-
-    elif task == 3:
         book(phrase)
         result = "Here are some results"
-
-    elif task == 4:
-        get_weather()
-        result = "Here are the results"
-
-    elif task == 5:
-        get_news_update()
-        result = "Here are the results"
 
     else:
         result = "Sorry, I don't think i understand"
